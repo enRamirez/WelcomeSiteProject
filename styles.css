@@ -5,15 +5,20 @@ body{
 
 main{
     background-color: turquoise;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 section{
     text-align: center;
-    color: white;
+    padding: 8%;
+
 }
 
 h1{
-    font-size: 40px;
+    font-size: 60px;
+    text-align: center;
 }
 
 .barone,
@@ -36,23 +41,50 @@ h1{
     background-color: orange;
 }
 
-.container {  display: grid;
+  main { grid-area: main; }
+  
+  .one { grid-area: one; }
+  
+  .two { grid-area: two; }
+  
+  .three { grid-area: three; } 
+
+/* Define grid for mobile first */
+
+  .container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas: 
+    "main"
+    "one"
+    "two"
+    "three"
+    ;
+  }
+  
+  /* Desktop media query */
+
+  @media (min-width: 576px){
+    .container{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-areas: 
+        "main main main"
+        "one two three"
+        ;
+      }
+  }
+
+  @media (min-width: 992px){.container {  display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
       "main main main"
-      "sec1 sec2 sec3";
-  }
-  
-  main { grid-area: main; }
-  
-  .sec1 { grid-area: sec1; }
-  
-  .sec2 { grid-area: sec2; }
-  
-  .sec3 { grid-area: sec3; }
-
-  
+      "one two three";
+     }
+}
   
